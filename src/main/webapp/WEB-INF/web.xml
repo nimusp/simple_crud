@@ -1,0 +1,17 @@
+<!--
+  ~ Developed by Sumin Pavel on 5/4/19 1:45 PM
+  -->
+
+<web-app>
+
+    <servlet>
+        <servlet-name>UserController</servlet-name>
+        <servlet-class>myself.inc.controller.UserController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UserController</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+</web-app>

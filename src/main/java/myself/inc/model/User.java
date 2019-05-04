@@ -5,50 +5,41 @@
 package myself.inc.model;
 
 import java.util.Date;
-import java.util.Objects;
 
 public class User {
 
-    private int userId;
-    private String firstName;
-    private String lastName;
-    private Date dateOfBirth;
-    private String email;
+    private final int userId;
+    private final String firstName;
+    private final String lastName;
+    private final Date dateOfBirth;
+    private final String email;
 
-    public void setUserId(int userId) {
+    public User(int userId, String firstName, String lastName, Date dateOfBirth, String email) {
         this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.email = email;
+    }
+
+    public int getUserId() {
+        return this.userId;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public String getLastName() {
         return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
     public String getEmail() {
         return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     @Override

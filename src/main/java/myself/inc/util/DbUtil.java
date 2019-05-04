@@ -4,11 +4,11 @@
 
 package myself.inc.util;
 
+import com.mysql.cj.jdbc.MysqlDataSource;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
-import java.sql.Driver;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
@@ -22,13 +22,15 @@ public class DbUtil {
             InputStream stream = DbUtil.class.getClassLoader().getResourceAsStream("db.properties");
             try {
                 properties.load(stream);
-                String driver = properties.getProperty("driver");
-                String url = properties.getProperty("url");
                 String user = properties.getProperty("user");
                 String password = properties.getProperty("password");
-                DriverManager.registerDriver((Driver) Class.forName(driver).newInstance());
-                connection = DriverManager.getConnection(url, user, password);
-            } catch (IOException | ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException e) {
+                MysqlDataSource dataSource = new MysqlDataSource();
+                dataSource.setServerTimezone("UTC");
+                dataSource.setDatabaseName("my_database");
+                dataSource.setUser(user);
+                dataSource.setPassword(password);
+                connection = dataSource.getConnection();
+            } catch (IOException | SQLException e) {
                 e.printStackTrace();
             }
         }
